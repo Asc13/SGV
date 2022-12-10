@@ -1,0 +1,13 @@
+{
+    "files.associations": {
+        "*.vert": "coffeescript",
+        "*.frag": "coffeescript",
+        "*.mlib": "xml",
+        "*.geom": "coffeescript",
+        "*.tese": "coffeescript",
+        "*.tesc": "coffeescript",
+        "rbt.h": "c",
+        "stdlib.h": "c",
+        "stdio.h": "c"
+    }
+}
