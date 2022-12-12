@@ -27,7 +27,7 @@ void addProduct(Products products, char* id) {
         second_index = (int) id[1] - ASCII,
         index = TAM * first_index + second_index;
 
-    insertion(&(products->idsByFirstLetters[index]), id);
+    insertion(&(products->idsByFirstLetters[index]), id, NULL);
     products->num_values++;
 }
 
@@ -43,4 +43,19 @@ int searchProduct(Products products, char* id) {
 
 int getNumProducts(Products products) {
     return products->num_values;    
+}
+
+
+char** getProductsStartedByLetterHelper(Products products, int* counter, char letter) {
+    char** c = (char**) malloc(products->num_values * sizeof(char*));
+
+    int index = ((int) letter - ASCII) * TAM;
+
+    for(int i = 0; i < TAM; i++) {
+        getAllSeparated(products->idsByFirstLetters[index + i], c, counter);
+    }
+
+    c = (char**) realloc(c, *counter * sizeof(char*));
+
+    return c;
 }

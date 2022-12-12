@@ -1,6 +1,8 @@
 #ifndef SGV_H
 #define SGV_H
 
+#define OBJECTSIZE 7
+
 typedef struct sgv* SGV;
 
 SGV initSGV();

@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
+#include <omp.h>
 
 #ifndef Products_H
 #define Products_H
@@ -18,5 +19,7 @@ void addProduct(Products products, char* id);
 int searchProduct(Products products, char* id);
 
 int getNumProducts(Products products);
+
+char** getProductsStartedByLetterHelper(Products products, int* counter, char letter);
 
 #endif

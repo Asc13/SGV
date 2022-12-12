@@ -16,7 +16,7 @@ OBJS = $(addprefix $(DIR_OBJ)/, $(SRCS:c=o))
 
 INC_DIRS = -I./ $(addprefix -I, $(SUBDIR))
 
-LIBS = -lpcre2-8
+LIBS = #-fopenmp -funroll-all-loops -ftree-vectorize -msse4.1
 
 PHONY = $(TARGET)
 $(TARGET): $(OBJS)
@@ -30,6 +30,8 @@ PHONY += clean
 
 clean:
 	rm -rf $(OUTDIR)/* $(DIR_OBJ)/*
+
+#export OMP_NUM_THREADS=12
 
 run:
 	./$(OUTDIR)/$(TARGET)

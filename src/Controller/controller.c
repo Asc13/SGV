@@ -66,32 +66,68 @@ void controller() {
             case 0:
                 char clientsFilePath[128] = "Files/Clientes.txt",
                      productsFilePath[128] = "Files/Produtos.txt", 
-                     salesFilePath[128] = "Files/Vendas_5M.txt";
+                     salesFilePath[128] = "Files/Vendas_1M.txt";
                 
                 //char path[20] = "../../Files/";
                 //checkFiles(path, clientsFilePath, productsFilePath, salesFilePath);
                 loadSGVFromFiles(sgv, clientsFilePath, productsFilePath, salesFilePath);
+                getCurrentFileInfo(sgv);
                 break;
             
             case 1:
+                char letter;
+                show("\nLetter: ");
+                scanf(" %c", &letter);
+
+                getProductsStartedByLetter(sgv, letter);
                 break;
             
             case 2:
                 break;
             
             case 3:
+                char mode[10];
+                int branch = 0;
+
+                show("\nMode (Total or Branch): ");
+                scanf(" %s", &mode);
+
+                if(strcmp(mode, "Branch") == 0) {
+                    show("\nBranch (1-3): ");
+                    scanf("%d", &branch);
+                }
+                
+                getProductsNeverBought(sgv, branch);
+
                 break;
             
             case 4:
+                getClientsOfAllBranches(sgv);
                 break;
             
             case 5:
+                getClientsAndProductsNeverBoughtCount(sgv);
                 break;
             
             case 6:
+                char client[10];
+
+                show("\nClient: ");
+                scanf(" %s", &client);
+
+                getProductsBoughtByClient(sgv, client);
                 break;
             
             case 7:
+                int minMonth, maxMonth;
+
+                show("\nMinimum month: ");
+                scanf("%d", &minMonth);
+
+                show("\nMaximum month: ");
+                scanf("%d", &maxMonth);
+
+                getSalesAndProfit(sgv, minMonth, maxMonth);
                 break;
             
             case 8:
